@@ -4,21 +4,15 @@ import Timelinecardcomponent from "../timelinecardcomponent";
 import timelinedata from "../timelinedata.json";
 
 const Timelinecard = () => {
-  const [data, setdata] = useState([...timelinedata]);
+  const [data] = useState([...timelinedata]);
   const [currentevent, setcurrentevent] = useState(Array);
-
-  // function maptoarray(()=> {
-  //   data.map((el) => (
-  //     setcurrentevent((prevState) => [...prevState, el])
-  //   ))
-  // })
 
   useEffect(() => {
     async function changeevent() {
+      //check new length of currentevent, if > 5, reduce by one
       await data.forEach((el, i) => {
         setTimeout(() => {
           setcurrentevent((currentarray) => {
-            console.log(currentarray);
             if (currentarray.length >= 5) {
               const newarray = [...currentarray];
               newarray.shift();
@@ -36,19 +30,18 @@ const Timelinecard = () => {
               description: el.description,
             },
           ]);
-
-          //check new length of currentevent, if > 5, reduce by one
         }, i * 3000);
       });
     }
 
     changeevent();
-  }, []);
+  }, [data]);
 
   return (
-    <div>
+    <div className="event" data-testid="card">
       {currentevent.map((el: any) => (
-        <div className="event">
+        <div className="event" key={el.id}>
+          <div className="timedot"></div>
           <div className={el.id % 2 === 0 ? "left" : "right"}>
             <Timelinecardcomponent
               title={el.title}

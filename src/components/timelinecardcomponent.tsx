@@ -7,6 +7,7 @@ const Timelinecardcomponent = ({ time, title, description }: any) => {
       <div className="description">
         {title}
         <br />
+        <br />
         {description}
       </div>
     </div>
