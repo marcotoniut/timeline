@@ -32,9 +32,7 @@ body,
   margin-top: 1%;
 }
 
-/* find way to fix .app window to be of fixed size relative to window */
 .App {
-  /* margin: 0; */
   height: 100%;
   width: 80%;
   display: flex;
@@ -69,7 +67,6 @@ body,
   border: #b967d9 solid 5px;
   min-width: 300px;
   z-index: 4;
-  /* min-height: 50px; */
 }
 
 .timedisplay {
@@ -91,7 +88,6 @@ body,
   border: #1e2331 solid 5px;
   min-width: 300px;
   z-index: 4;
-  /* min-height: 50px; */
 }
 
 .description {
@@ -140,9 +136,4 @@ body,
   flex-direction: column;
   z-index: 3;
   font-family: cursive;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
