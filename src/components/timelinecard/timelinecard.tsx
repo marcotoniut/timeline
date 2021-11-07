@@ -9,6 +9,11 @@ const Timelinecard = () => {
 
   useEffect(() => {
     async function changeevent() {
+      console.log(data);
+
+      const result = data.sort((a, b) => (a.time > b.time ? 1 : -1));
+      console.log(result);
+
       //check new length of currentevent, if > 5, reduce by one
       await data.forEach((el, i) => {
         setTimeout(() => {
@@ -30,7 +35,7 @@ const Timelinecard = () => {
               description: el.description,
             },
           ]);
-        }, i * 3000);
+        }, i * 5000);
       });
     }
 
