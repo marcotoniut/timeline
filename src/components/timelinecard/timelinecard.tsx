@@ -6,6 +6,7 @@ import timelinedata from "../timelinedata.json";
 const Timelinecard = () => {
   const [data] = useState([...timelinedata]);
   const [currentevent, setcurrentevent] = useState(Array);
+  const [cardselected, setcardselected] = useState<null | string>(null);
 
   useEffect(() => {
     async function changeevent() {
@@ -42,17 +43,26 @@ const Timelinecard = () => {
     changeevent();
   }, [data]);
 
+  function selected(id: string) {
+    cardselected === id ? setcardselected(id) : setcardselected(null);
+  }
+
   return (
     <div className="event" data-testid="card">
       {currentevent.map((el: any) => (
-        <div className="event" key={el.id}>
-          <div className="timedot"></div>
-          <div className={el.id % 2 === 0 ? "left" : "right"}>
-            <Timelinecardcomponent
-              title={el.title}
-              time={el.time}
-              description={el.description}
-            />
+        <div
+          className={cardselected === el.id ? "selected" : ""}
+          onClick={() => selected(el.id)}
+        >
+          <div className="event" key={el.id}>
+            <div className="timedot"></div>
+            <div className={el.id % 2 === 0 ? "left" : "right"}>
+              <Timelinecardcomponent
+                title={el.title}
+                time={el.time}
+                description={el.description}
+              />
+            </div>
           </div>
         </div>
       ))}
