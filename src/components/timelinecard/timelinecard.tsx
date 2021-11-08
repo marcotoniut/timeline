@@ -44,18 +44,18 @@ const Timelinecard = () => {
   }, [data]);
 
   function selected(id: string) {
-    cardselected === id ? setcardselected(id) : setcardselected(null);
+    setcardselected(id);
   }
 
   return (
     <div className="event" data-testid="card">
       {currentevent.map((el: any) => (
-        <div
-          className={cardselected === el.id ? "selected" : ""}
-          onClick={() => selected(el.id)}
-        >
-          <div className="event" key={el.id}>
-            <div className="timedot"></div>
+        <div className="event" key={el.id}>
+          <div className="timedot"></div>
+          <div
+            className={cardselected === el.id ? "selected event" : "event"}
+            onClick={() => selected(el.id)}
+          >
             <div className={el.id % 2 === 0 ? "left" : "right"}>
               <Timelinecardcomponent
                 title={el.title}
@@ -65,6 +65,7 @@ const Timelinecard = () => {
             </div>
           </div>
         </div>
+        // </div>
       ))}
     </div>
   );
