@@ -1,4 +1,10 @@
-const Timelinecardcomponent = ({ time, title, description }: any) => {
+export interface Props {
+  time: string;
+  title: string;
+  description: string;
+}
+
+const Timelinecardcomponent = ({ time, title, description }: Props) => {
   return (
     <div className="card">
       <div className="time">
